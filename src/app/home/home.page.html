@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Blank </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,6 +13,21 @@
 
   <div id="container">
     <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p>
+      Start with OTP
+      <a [routerLink]="['/otp']"> OTP page </a>
+    </p>
+    <p>
+      Start with login
+      <a [routerLink]="['/login']"> login page </a>
+    </p>
+    <p>
+      Start with signup
+      <a [routerLink]="['/signup']"> signup page </a>
+    </p>
+    <p>
+      Start with home
+      <a [routerLink]="['/dashboard']"> home page </a>
+    </p>
   </div>
 </ion-content>

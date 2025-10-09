@@ -31,8 +31,21 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": [
+              "src/global.scss",
+              "src/theme/variables.scss",
+              "src/assets/css/GTWalsheimPro.css",
+              "src/assets/css/vendors/iconsax.css",
+              "src/assets/css/vendors/bootstrap.css",
+              "src/assets/css/style.css"
+            ],
+            "scripts": [
+              "src/assets/js/script.js",
+              "src/assets/js/bootstrap.bundle.min.js",
+              "src/assets/js/iconsax.js",
+              "src/assets/js/sticky-header.js",
+              "src/assets/js/template-setting.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -111,8 +124,21 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": [
+              "src/global.scss",
+              "src/theme/variables.scss",
+              "src/assets/css/GTWalsheimPro.css",
+              "src/assets/css/vendors/iconsax.css",
+              "src/assets/css/vendors/bootstrap.css",
+              "src/assets/css/style.css"
+            ],
+            "scripts": [
+              "src/assets/js/script.js",
+              "src/assets/js/bootstrap.bundle.min.js",
+              "src/assets/js/iconsax.js",
+              "src/assets/js/sticky-header.js",
+              "src/assets/js/template-setting.js"
+            ]
           },
           "configurations": {
             "ci": {
@@ -124,19 +150,14 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "schematicCollections": [
-      "@ionic/angular-toolkit"
-    ]
+    "schematicCollections": ["@ionic/angular-toolkit"]
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
