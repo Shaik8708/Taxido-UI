@@ -148,7 +148,12 @@
     <div class="profile-list alert-list">
       <ul class="setting-listing">
         <li class="w-100">
-          <a href="#delete" class="setting-box" data-bs-toggle="modal">
+          <a
+            href="#"
+            class="setting-box"
+            data-bs-toggle="modal"
+            data-bs-target="#delete"
+          >
             <div class="setting-icon">
               <i class="iconsax icon" data-icon="user-2-remove"> </i>
             </div>
@@ -159,7 +164,12 @@
         </li>
 
         <li class="w-100">
-          <a href="#logout" class="setting-box" data-bs-toggle="modal">
+          <a
+            href="#"
+            class="setting-box"
+            data-bs-toggle="modal"
+            data-bs-target="#logout"
+          >
             <div class="setting-icon">
               <i class="iconsax icon" data-icon="logout-2"> </i>
             </div>
@@ -272,76 +282,6 @@
 </div>
 <!-- bottom navbar end -->
 
-<!-- delete account modal starts -->
-<div
-  class="modal delete-modal fade"
-  id="delete"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img
-          class="img-fluid icon"
-          src="../../assets/images/svg/alert.svg"
-          alt="alert"
-        />
-        <h4>Delete Your Account</h4>
-        <p>You will lost your data By delete your account.</p>
-      </div>
-      <div class="modal-footer">
-        <a
-          href="setting.html"
-          class="btn gray-btn w-50 m-0"
-          data-bs-dismiss="modal"
-          >No, Keep it</a
-        >
-        <a href="login.html" class="btn theme-btn w-50 m-0">Yes, Delete</a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- delete account modal end -->
-
-<!-- logout modal starts -->
-<div
-  class="modal delete-modal fade"
-  id="logout"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  tabindex="-1"
-  aria-labelledby="staticBackdropLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-body">
-        <img
-          class="img-fluid icon"
-          src="../../assets/images/svg/logout.svg"
-          alt="alert"
-        />
-        <h4>Come Back Soon</h4>
-        <p>Are you sure You want to Logout?</p>
-      </div>
-      <div class="modal-footer">
-        <a
-          href="setting.html"
-          class="btn gray-btn w-50 m-0"
-          data-bs-dismiss="modal"
-          >Stay, logged in</a
-        >
-        <a href="login.html" class="btn theme-btn w-50 m-0">Yes, Logout </a>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- logout modal end -->
-
 <!-- sidebar starts -->
 <div
   class="offcanvas sidebar-offcanvas offcanvas-start"
@@ -448,3 +388,73 @@
   </div>
 </div>
 <!-- sidebar end -->
+
+<!-- delete account modal starts -->
+<div
+  class="modal delete-modal fade"
+  id="delete"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img
+          class="img-fluid icon"
+          src="../../assets/images/svg/alert.svg"
+          alt="alert"
+        />
+        <h4>Delete Your Account</h4>
+        <p>You will lost your data By delete your account.</p>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="setting.html"
+          class="btn gray-btn w-50 m-0"
+          data-bs-dismiss="modal"
+          >No, Keep it</a
+        >
+        <a href="login.html" class="btn theme-btn w-50 m-0">Yes, Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- delete account modal end -->
+
+<!-- logout modal starts -->
+<div
+  class="modal delete-modal fade"
+  id="logout"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img
+          class="img-fluid icon"
+          src="../../assets/images/svg/logout.svg"
+          alt="alert"
+        />
+        <h4>Come Back Soon</h4>
+        <p>Are you sure You want to Logout?</p>
+      </div>
+      <div class="modal-footer">
+        <a
+          href="setting.html"
+          class="btn gray-btn w-50 m-0"
+          data-bs-dismiss="modal"
+          >Stay, logged in</a
+        >
+        <a href="login.html" class="btn theme-btn w-50 m-0">Yes, Logout </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- logout modal end -->
