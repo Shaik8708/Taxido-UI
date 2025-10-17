@@ -28,7 +28,7 @@
         <h6>Hey, You have been missed !</h6>
       </div>
 
-      <form class="auth-form">
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group mt-0">
           <label class="form-label" for="validationDefault01"
             >Mobile Number</label
@@ -40,16 +40,8 @@
                 href="#"
                 data-bs-toggle="dropdown"
               >
-                +1-212
-                <i class="iconsax dropdown-icon" data-icon="chevron-down"> </i>
+                +91
               </a>
-              <ul class="dropdown-menu">
-                <li><a href="#" class="dropdown-item">+1-212</a></li>
-                <li><a href="#" class="dropdown-item">+1-213</a></li>
-                <li><a href="#" class="dropdown-item">+1-702</a></li>
-                <li><a href="#" class="dropdown-item">+1-312</a></li>
-                <li><a href="#" class="dropdown-item">+1-617</a></li>
-              </ul>
             </div>
             <div class="form-group position-relative mt-0 w-100">
               <input
@@ -57,9 +49,23 @@
                 class="form-control"
                 id="validationDefault01"
                 placeholder="Enter your number"
+                formControlName="phoneNumber"
                 required
               />
               <i class="iconsax icon" data-icon="phone"></i>
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <div class="form-group position-relative mt-2 w-100">
+              <input
+                type="password"
+                class="form-control"
+                id="pass"
+                placeholder="Enter your password"
+                required
+                formControlName="password"
+              />
+              <i class="iconsax icon" data-icon="password-check"></i>
             </div>
           </div>
         </div>
@@ -94,9 +100,9 @@
           >
         </div>
 
-        <a [routerLink]="['/otp']" class="btn theme-btn w-100 auth-btn"
-          >Get OTP</a
-        >
+        <button type="submit" class="btn theme-btn w-100 auth-btn">
+          Login
+        </button>
         <h6 class="content-color fw-normal my-3 text-center">
           New User ?
           <a href="signup.html" class="title-color fw-medium">Sign up</a>
