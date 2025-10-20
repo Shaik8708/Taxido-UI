@@ -13,9 +13,16 @@ export class Base {
     return this.http.post(`${environment.baseUrl}dealer/login`, credentials);
   }
 
-  // register(data: { username: string; email: string; password: string }): Observable<any> {
-  //   return this.http.post(`${this.apiUrl}/register`, data);
-  // }
+  signup(data: {
+    type: string[];
+    fullName: string;
+    password: string;
+    email: string;
+    username: string;
+    phoneNumber: number;
+  }): Observable<any> {
+    return this.http.post(`${environment.baseUrl}dealer/register`, data);
+  }
 
   // logout() {
   //   localStorage.removeItem('token');

@@ -28,18 +28,48 @@
         <h6>Explore your life by joining with Ride.</h6>
       </div>
 
-      <form class="auth-form">
+      <form class="auth-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div class="form-group mt-0">
-          <label class="form-label mb-2" for="Inputname">User Name</label>
+          <label class="form-label mb-2" for="Inputname">Full Name</label>
           <div class="position-relative">
             <input
               type="text"
               class="form-control"
               id="Inputname"
+              formControlName="fullName"
               placeholder="Enter your name"
             />
             <i class="iconsax icon" data-icon="user-2"></i>
           </div>
+          <small
+            *ngIf="
+              signupForm.get('fullName')?.touched &&
+              signupForm.get('fullName')?.invalid
+            "
+            class="text-danger"
+            >Name is required (min 2 chars)</small
+          >
+        </div>
+        <div class="form-group">
+          <label class="form-label mb-2" for="Inputusername">Username</label>
+          <div class="position-relative">
+            <input
+              type="text"
+              class="form-control"
+              id="Inputusername"
+              formControlName="userName"
+              placeholder="Enter your username"
+            />
+            <i class="iconsax icon" data-icon="user-2"></i>
+          </div>
+          <small
+            *ngIf="
+              signupForm.get('userName')?.touched &&
+              signupForm.get('userName')?.invalid
+            "
+            class="text-danger"
+            >Username is not Valid</small
+          >
         </div>
 
         <div class="form-group">
@@ -49,10 +79,19 @@
               type="number"
               class="form-control"
               id="Inputnumner"
+              formControlName="number"
               placeholder="Enter your number"
             />
             <i class="iconsax icon" data-icon="phone"></i>
           </div>
+          <small
+            *ngIf="
+              signupForm.get('number')?.touched &&
+              signupForm.get('number')?.invalid
+            "
+            class="text-danger"
+            >Enter a valid 10-digit number</small
+          >
         </div>
 
         <div class="form-group">
@@ -62,30 +101,117 @@
               type="email"
               class="form-control"
               id="Inputemail"
+              formControlName="email"
               placeholder="Enter your email"
             />
             <i class="iconsax icon" data-icon="mail"></i>
           </div>
+          <small
+            *ngIf="
+              signupForm.get('email')?.touched &&
+              signupForm.get('email')?.invalid
+            "
+            class="text-danger"
+            >Enter a valid email</small
+          >
+        </div>
+        <div class="form-group">
+          <label class="form-label mb-2" for="Inputpassword">Password</label>
+          <div class="position-relative">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control"
+              id="Inputpassword"
+              formControlName="password"
+              placeholder="Enter your password"
+            />
+            <i
+              class="iconsax icon cursor-pointer"
+              [attr.data-icon]="showPassword ? 'eye' : 'eye-slash'"
+              (click)="togglePasswordVisibility('password')"
+            ></i>
+          </div>
+          <small
+            *ngIf="
+              signupForm.get('password')?.touched &&
+              signupForm.get('password')?.hasError('required')
+            "
+            class="text-danger"
+          >
+            Password is required
+          </small>
+          <small
+            *ngIf="
+              signupForm.get('password')?.touched &&
+              signupForm.get('password')?.hasError('minlength')
+            "
+            class="text-danger"
+          >
+            Minimum 6 characters required
+          </small>
         </div>
 
         <div class="form-group">
+          <label class="form-label mb-2" for="ConfirmPassword"
+            >Confirm Password</label
+          >
+          <div class="position-relative">
+            <input
+              [type]="showConfirmPassword ? 'text' : 'password'"
+              class="form-control"
+              id="ConfirmPassword"
+              formControlName="confirmPassword"
+              placeholder="Confirm password"
+            />
+            <!-- <i class="iconsax icon" data-icon="password-check"></i> -->
+            <i
+              class="iconsax icon cursor-pointer"
+              [attr.data-icon]="showConfirmPassword ? 'eye' : 'eye-slash'"
+              (click)="togglePasswordVisibility('confirmPassword')"
+            ></i>
+          </div>
+          <small
+            *ngIf="
+              signupForm.get('confirmPassword')?.touched &&
+              signupForm.get('confirmPassword')?.hasError('required')
+            "
+            class="text-danger"
+          >
+            Confirm password is required
+          </small>
+          <small
+            *ngIf="
+              signupForm.get('confirmPassword')?.touched &&
+              signupForm.get('confirmPassword')?.hasError('passwordMismatch')
+            "
+            class="text-danger"
+          >
+            Passwords do not match
+          </small>
+        </div>
+
+        <!-- <div class="form-group">
           <label class="form-label mb-2" for="Inputid">Referral ID</label>
           <div class="position-relative">
             <input
               type="email"
               class="form-control"
               id="Inputid"
+              formControlName="referralId"
               placeholder="Enter referral id"
             />
             <i class="iconsax icon" data-icon="profile-card"></i>
           </div>
-        </div>
+        </div> -->
 
-        <a
+        <!-- <a
           href="driver-document-verify.html"
           class="btn theme-btn w-100 auth-btn"
           >Sign Up</a
-        >
+        > -->
+        <button type="submit" class="btn theme-btn w-100 auth-btn">
+          Sign Up
+        </button>
         <h6 class="content-color fw-normal my-3 text-center">
           Already have an account ?
           <a href="login.html" class="title-color fw-medium">Sign in</a>

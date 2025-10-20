@@ -16,6 +16,7 @@ import { NotificationsComponent } from './pages/components/notifications/notific
 import { MyRidesComponent } from './pages/components/my-rides/my-rides.component';
 import { HomeComponent } from './pages/components/home/home.component';
 import { ContactComponent } from './pages/components/contact/contact.component';
+import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ContactComponent } from './pages/components/contact/contact.component';
     MyRidesComponent,
     HomeComponent,
     ContactComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
