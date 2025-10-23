@@ -16,7 +16,7 @@ const routes: Routes = [
       import('./home/home.module').then((m) => m.HomePageModule),
   },
   { path: 'otp', component: OtpComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'dashboard', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'active-rides', component: ActiveRidesComponent },
