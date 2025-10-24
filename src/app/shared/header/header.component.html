@@ -1,3 +1,65 @@
-<p>
-  header works!
-</p>
+<!-- ✅ App Header -->
+<header
+  *ngIf="type === 'app'"
+  id="header"
+  class="main-header"
+  [ngClass]="{ 'inner-page-header': title }"
+>
+  <div class="custom-container">
+    <div class="header-panel">
+      <!-- Left section -->
+      <div class="flex-align-center gap-2">
+        <a *ngIf="showMenu" href="#offcanvasLeft" data-bs-toggle="offcanvas">
+          <i class="iconsax icon-btn" data-icon="text-align-left"></i>
+        </a>
+
+        <a *ngIf="showBack" [routerLink]="['/home']">
+          <i class="iconsax icon-btn" data-icon="chevron-left"></i>
+        </a>
+
+        <img
+          *ngIf="showLogo"
+          class="img-fluid logo"
+          src="../../assets/images/logo/driver/driver-logo-white.png"
+          alt="logo"
+        />
+
+        <h3 *ngIf="title">{{ title }}</h3>
+      </div>
+
+      <!-- Right section -->
+      <div class="flex-align-center gap-sm-3 gap-2">
+        <a *ngIf="showMessages" href="chatting.html">
+          <i class="iconsax icon-btn" data-icon="messages-2"></i>
+        </a>
+        <a *ngIf="showNotification" href="notification.html">
+          <i class="iconsax icon-btn noti-icon" data-icon="bell-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ Auth Header -->
+<header *ngIf="type === 'auth'" id="header" class="auth-header">
+  <div class="custom-container">
+    <div class="header-panel">
+      <a *ngIf="showBack" [routerLink]="['/login']">
+        <i class="iconsax icon-btn" data-icon="chevron-left"></i>
+      </a>
+
+      <img
+        *ngIf="showLogo"
+        class="img-fluid mx-auto logo"
+        src="../../assets/images/logo/driver/driver-logo.png"
+        alt="logo"
+      />
+      <img
+        *ngIf="showLogo"
+        class="img-fluid mx-auto logo-dark"
+        src="../../assets/images/logo/driver/driver-logo-dark.png"
+        alt="logo"
+      />
+    </div>
+  </div>
+</header>

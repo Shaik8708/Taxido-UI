@@ -1,5 +1,5 @@
 <!-- header starts -->
-<header id="header" class="main-header inner-page-header">
+<!-- <header id="header" class="main-header inner-page-header">
   <div class="custom-container">
     <div class="header-panel">
       <a href="#offcanvasLeft" data-bs-toggle="offcanvas">
@@ -8,7 +8,8 @@
       <h3>Setting</h3>
     </div>
   </div>
-</header>
+</header> -->
+<app-header></app-header>
 <!-- header end -->
 
 <!-- profile section starts -->
@@ -189,7 +190,8 @@
 <!-- panel-space end -->
 
 <!-- bottom navbar start -->
-<div class="navbar-menu">
+<app-tabs></app-tabs>
+<!-- <div class="navbar-menu">
   <ul>
     <li>
       <a href="home.html">
@@ -207,22 +209,6 @@
         </div>
         <span>Home</span>
       </a>
-      <!-- <a [routerLink]="['/home']">
-        <div class="icon">
-          <img
-            class="unactive"
-            src="../../assets/images/svg/home.svg"
-            alt="home"
-          />
-          <img
-            class="active"
-            src="../../assets/images/svg/home-fill.svg"
-            alt="home"
-          />
-        </div>
-        <span>Home</span>
-      </a>
-    </li> -->
     </li>
 
     <li>
@@ -279,11 +265,12 @@
       </a>
     </li>
   </ul>
-</div>
+</div> -->
 <!-- bottom navbar end -->
 
 <!-- sidebar starts -->
-<div
+<app-side-bar></app-side-bar>
+<!-- <div
   class="offcanvas sidebar-offcanvas offcanvas-start"
   tabindex="-1"
   id="offcanvasLeft"
@@ -316,10 +303,6 @@
     </a>
     <ul class="link-section switch-section">
       <li class="active">
-        <!-- <a href="home.html" class="pages">
-          <i class="iconsax sidebar-icon" data-icon="home-2"> </i>
-          <h3>Home</h3>
-        </a> -->
         <a [routerLink]="['/home']" class="pages">
           <i class="iconsax sidebar-icon" data-icon="home-2"></i>
           <h3>Home</h3>
@@ -386,7 +369,7 @@
       </a>
     </div>
   </div>
-</div>
+</div> -->
 <!-- sidebar end -->
 
 <!-- delete account modal starts -->

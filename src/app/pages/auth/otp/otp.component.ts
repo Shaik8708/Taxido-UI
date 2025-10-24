@@ -4,11 +4,10 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-otp',
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss'],
+  standalone: false,
 })
-export class OtpComponent  implements OnInit {
-
-  constructor() { }
+export class OtpComponent implements OnInit {
+  constructor() {}
 
   ngOnInit() {}
-
 }

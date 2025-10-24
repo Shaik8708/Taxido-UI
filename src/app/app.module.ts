@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -17,6 +17,10 @@ import { MyRidesComponent } from './pages/components/my-rides/my-rides.component
 import { HomeComponent } from './pages/components/home/home.component';
 import { ContactComponent } from './pages/components/contact/contact.component';
 import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
+import { HeaderComponent } from 'src/app/shared/header/header.component';
+import { OtpComponent } from './pages/auth/otp/otp.component';
+import { SideBarComponent } from './shared/side-bar/side-bar.component';
+import { TabsComponent } from './shared/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
     HomeComponent,
     ContactComponent,
     SignUpComponent,
+    HeaderComponent,
+    OtpComponent,
+    SideBarComponent,
+    TabsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,11 +44,13 @@ import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
     AppRoutingModule,
     RouterLink,
     ReactiveFormsModule,
+    RouterModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideHttpClient(),
   ],
   bootstrap: [AppComponent],
+  exports: [HeaderComponent, SideBarComponent, TabsComponent],
 })
 export class AppModule {}

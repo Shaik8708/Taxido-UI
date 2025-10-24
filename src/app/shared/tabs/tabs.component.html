@@ -1,3 +1,13 @@
-<p>
-  tabs works!
-</p>
+<div class="navbar-menu">
+  <ul>
+    <li *ngFor="let item of navItems" [class.active]="isActive(item.route)">
+      <a [routerLink]="item.route">
+        <div class="icon">
+          <img class="unactive" [src]="item.icon" [alt]="item.label" />
+          <img class="active" [src]="item.activeIcon" [alt]="item.label" />
+        </div>
+        <span>{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
