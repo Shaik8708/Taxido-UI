@@ -30,18 +30,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.baseService.login(this.loginForm.value).subscribe({
-        next: (res) => {
-          console.log(res);
-
-          // this.baseService.saveToken(res.token);
-          this.router.navigate(['/home']); // redirect to dashboard
-        },
-        error: (err) => {
-          this.errorMessage = err.error?.message || 'Login failed';
-        },
-      });
-    }
+    // if (this.loginForm.valid) {
+    //   this.baseService.login(this.loginForm.value).subscribe({
+    //     next: (res) => {
+    //       if (res?.token) {
+    //         this.baseService.saveToken(res.token);
+    this.router.navigate(['/dashboard']);
+    //       } else {
+    //         this.errorMessage = 'Invalid response from server';
+    //       }
+    //     },
+    //     error: (err) => {
+    //       this.errorMessage = err.error?.message || 'Login failed. Try again.';
+    //     },
+    //   });
+    // }
   }
 }

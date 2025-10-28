@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title> Blank </ion-title>
   </ion-toolbar>
@@ -46,4 +46,11 @@
       <a [routerLink]="['/settings']"> settings page </a>
     </p>
   </div>
+</ion-content> -->
+
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+
+<ion-content>
+  <router-outlet></router-outlet>
 </ion-content>

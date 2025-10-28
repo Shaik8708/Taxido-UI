@@ -24,15 +24,19 @@ export class Base {
     return this.http.post(`${environment.baseUrl}dealer/register`, data);
   }
 
-  // logout() {
-  //   localStorage.removeItem('token');
-  // }
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
 
-  // saveToken(token: string) {
-  //   localStorage.setItem('token', token);
-  // }
+  logout() {
+    localStorage.removeItem('token');
+  }
 
-  // getToken(): string | null {
-  //   return localStorage.getItem('token');
-  // }
+  saveToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
 }

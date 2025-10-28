@@ -13,7 +13,7 @@
           <i class="iconsax icon-btn" data-icon="text-align-left"></i>
         </a>
 
-        <a *ngIf="showBack" [routerLink]="['/home']">
+        <a *ngIf="showBack" [routerLink]="['/dashboard']">
           <i class="iconsax icon-btn" data-icon="chevron-left"></i>
         </a>
 
@@ -29,10 +29,10 @@
 
       <!-- Right section -->
       <div class="flex-align-center gap-sm-3 gap-2">
-        <a *ngIf="showMessages" href="chatting.html">
+        <a *ngIf="showMessages" [routerLink]="['/dashboard']">
           <i class="iconsax icon-btn" data-icon="messages-2"></i>
         </a>
-        <a *ngIf="showNotification" href="notification.html">
+        <a *ngIf="showNotification" [routerLink]="['/notifications']">
           <i class="iconsax icon-btn noti-icon" data-icon="bell-2"></i>
         </a>
       </div>

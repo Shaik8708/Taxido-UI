@@ -66,31 +66,31 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.signupForm.valid) {
-      let data = this.signupForm.value;
-      const register = {
-        type: ['dealer'],
-        fullName: data.fullName,
-        password: data.password,
-        email: data.email,
-        username: data.userName,
-        phoneNumber: data.number,
-      };
+    // if (this.signupForm.valid) {
+    //   let data = this.signupForm.value;
+    //   const register = {
+    //     type: ['dealer'],
+    //     fullName: data.fullName,
+    //     password: data.password,
+    //     email: data.email,
+    //     username: data.userName,
+    //     phoneNumber: data.number,
+    //   };
 
-      this.baseService.signup(register).subscribe({
-        next: (res) => {
-          console.log(res);
+    //   this.baseService.signup(register).subscribe({
+    //     next: (res) => {
+    //       console.log(res);
 
-          // this.baseService.saveToken(res.token);
-          this.signupForm.reset();
-          this.router.navigate(['/home']); // redirect to dashboard
-        },
-        error: (err) => {
-          this.errorMessage = err.error?.message || 'Login failed';
-        },
-      });
-    } else {
-      this.signupForm.markAllAsTouched();
-    }
+    //       // this.baseService.saveToken(res.token);
+    //       this.signupForm.reset();
+    this.router.navigate(['/login']); // redirect to dashboard
+    //     },
+    //     error: (err) => {
+    //       this.errorMessage = err.error?.message || 'Login failed';
+    //     },
+    //   });
+    // } else {
+    //   this.signupForm.markAllAsTouched();
+    // }
   }
 }

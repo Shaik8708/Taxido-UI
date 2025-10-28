@@ -10,11 +10,11 @@ import { NotificationsComponent } from './pages/components/notifications/notific
 import { SettingsComponent } from './pages/components/settings/settings.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule),
-  },
+  // {
+  //   path: 'home',
+  //   loadChildren: () =>
+  //     import('./home/home.module').then((m) => m.HomePageModule),
+  // },
   { path: 'otp', component: OtpComponent },
   { path: 'dashboard', component: HomeComponent },
   { path: 'login', component: LoginComponent },
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
 ];
