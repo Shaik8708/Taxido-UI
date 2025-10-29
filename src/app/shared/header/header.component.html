@@ -17,12 +17,13 @@
           <i class="iconsax icon-btn" data-icon="chevron-left"></i>
         </a>
 
-        <img
+        <!-- <img
           *ngIf="showLogo"
           class="img-fluid logo"
           src="../../assets/images/logo/driver/driver-logo-white.png"
           alt="logo"
-        />
+        /> -->
+        <span *ngIf="showLogo" class="logo-text">CarBazaar</span>
 
         <h3 *ngIf="title">{{ title }}</h3>
       </div>
@@ -48,18 +49,22 @@
         <i class="iconsax icon-btn" data-icon="chevron-left"></i>
       </a>
 
-      <img
+      <!-- <img
         *ngIf="showLogo"
         class="img-fluid mx-auto logo"
         src="../../assets/images/logo/driver/driver-logo.png"
         alt="logo"
-      />
-      <img
+      /> -->
+      <span *ngIf="showLogo" class="logo-text" style="color: black"
+        >CarBazaar</span
+      >
+      <!-- <img
         *ngIf="showLogo"
         class="img-fluid mx-auto logo-dark"
         src="../../assets/images/logo/driver/driver-logo-dark.png"
         alt="logo"
-      />
+      /> -->
+      <!-- <span *ngIf="showLogo" class="logo-text">CarBazaar</span> -->
     </div>
   </div>
 </header>
