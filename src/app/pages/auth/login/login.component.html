@@ -59,14 +59,23 @@
           <div class="d-flex gap-2">
             <div class="form-group position-relative mt-2 w-100">
               <input
-                type="password"
+                [type]="showPassword ? 'text' : 'password'"
                 class="form-control"
                 id="pass"
                 placeholder="Enter your password"
                 required
                 formControlName="password"
               />
-              <i class="iconsax icon" data-icon="password-check"></i>
+              <i
+                class="iconsax icon"
+                data-icon="password-check"
+                (click)="hideShowPass()"
+                tabindex="0"
+                role="button"
+                [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+                (keydown.enter)="hideShowPass()"
+                style="cursor: pointer;"
+              ></i>
             </div>
           </div>
         </div>

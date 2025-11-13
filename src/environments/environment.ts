@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://backend-dynamic-code-2iet.onrender.com/',
+  baseUrl: 'https://backend-dynamic-code-2iet.onrender.com',
 };
 
 /*

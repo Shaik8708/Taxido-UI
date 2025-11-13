@@ -6,7 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, finalize } from 'rxjs';
 import { Base } from 'src/app/services/base-api/base';
+import urlConfig from '../../../config/url.config.json';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,7 +24,7 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private baseService: Base,
+    private baseApi: Base,
     private router: Router
   ) {
     this.signupForm = this.fb.group(
@@ -83,7 +85,7 @@ export class SignUpComponent implements OnInit {
 
     //       // this.baseService.saveToken(res.token);
     //       this.signupForm.reset();
-    this.router.navigate(['/login']); // redirect to dashboard
+    // this.router.navigate(['/login']); // redirect to dashboard
     //     },
     //     error: (err) => {
     //       this.errorMessage = err.error?.message || 'Login failed';
@@ -92,5 +94,48 @@ export class SignUpComponent implements OnInit {
     // } else {
     //   this.signupForm.markAllAsTouched();
     // }
+
+    let data = this.signupForm.value;
+    console.log(data);
+
+    data.accessLevel = ['driver'];
+    // const payload = {
+    //   "type": "dealer",
+    //   "firstName": "dealers3",
+    //   "lastName": "ones4",
+    //   "username": "dealers3",
+    //   "password": "dealers3",
+    //   "email": "abc1235@gmail.com",
+    //   "phoneNumber": "49882383474",
+    //   "accessLevel": [
+    //       "dealer"
+    //   ]
+    // }
+    // this.loader.start()
+    // this.api.submitRegister(data)
+    this.baseApi
+      .post(urlConfig.dealerRegisterPath, data)
+      .pipe(
+        finalize(() => {
+          // this.loader.end();
+        }),
+        catchError((err) => {
+          if (err?.error?.message == 'Error From Fast To Sms') {
+            // this.toastService.presentToast("Spamming detected", "danger");
+          } else {
+            // this.toastService.presentToast(err?.error?.message, "danger");
+          }
+          throw err;
+        })
+      )
+      .subscribe((res: any) => {
+        if (res?.status == 'success') {
+          // this.toastService.presentToast("OTP Sent succesfully ", "success");
+          // this.api.submitotp({"email":res?.data?.email,"emailOTP":String(res?.data?.emailOTP)})
+
+          // this.cookieService.set("asp_dphn", data?.phoneNumber)
+          this.router.navigateByUrl('/otp');
+        }
+      });
   }
 }

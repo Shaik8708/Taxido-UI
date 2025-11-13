@@ -1,0 +1,19 @@
+{
+  "createPath": "/factory/create",
+  "deletePath": "/factory/delete",
+  "getAllPath": "/factory/getAll",
+  "getOnePath": "/factory/getOne",
+  "updatePath": "/factory/update/",
+  "dealerRegisterPath": "/dealer/register",
+  "dealerLoginPath": "/dealer/login",
+  "otpSentDealerPath": "/dealer/refresh-otp",
+
+  "dealerDetails": "dealerDetails",
+  "ppeProducts": "ppeProducts",
+  "location": "location",
+  "category": "category",
+  "subCategory": "subCategory",
+  "orders": "orders",
+  "bookDates": "bookDates",
+  "dealerProfile": "dealerProfile"
+}
