@@ -29,11 +29,28 @@
       <div class="auth-title pt-3">
         <div class="loader-line"></div>
         <h2>OTP verification</h2>
-        <h6>Enter OTP sent to +1-212-8684536</h6>
+        <h6>Enter OTP sent to {{ phoneNumber }}</h6>
       </div>
 
       <h4 class="title-color fw-medium otp-name">OTP</h4>
       <form class="otp-form">
+        <div
+          class="form-input dark-border-gradient"
+          *ngFor="let c of otpControls; let i = index"
+        >
+          <input
+            type="text"
+            maxlength="1"
+            class="form-control"
+            placeholder="0"
+            [id]="'five' + (i + 1)"
+            (input)="moveToNext($event, i)"
+            (keydown)="moveBack($event, i)"
+          />
+        </div>
+      </form>
+
+      <!-- <form class="otp-form">
         <div class="form-input dark-border-gradient">
           <input
             type="number"
@@ -84,11 +101,35 @@
             onfocus="onFocusEvent(5)"
           />
         </div>
-      </form>
-      <a href="home.html" class="btn theme-btn w-100 auth-btn">Verify</a>
+      </form> -->
+      <!-- <a href="home.html" class="btn theme-btn w-100 auth-btn">Verify</a>
       <h6 class="title-color fw-semibold mt-3 text-center">
         <span class="content-color fw-medium">Not Received Yet ? </span>
         <a href="otp.html" class="title-color fw-medium">Resend it</a>
+      </h6> -->
+      <a
+        (click)="onSubmit()"
+        class="btn theme-btn w-100 auth-btn"
+        type="submit"
+      >
+        Verify
+      </a>
+
+      <h6>
+        <p class="content-color fw-medium mt-2" *ngIf="countDownTimer">
+          Try Again After <span>{{ countDownTimer }}</span> seconds
+        </p>
+        <p class="content-color fw-medium mt-2">
+          Din't receive OTP?
+          <a
+            (click)="enableResendOtp && getOtp()"
+            class="title-color fw-medium cursor-pointer"
+            type="button"
+            [ngClass]="{ 'text-secondary': !enableResendOtp }"
+          >
+            Resend OTP
+          </a>
+        </p>
       </h6>
     </div>
   </div>

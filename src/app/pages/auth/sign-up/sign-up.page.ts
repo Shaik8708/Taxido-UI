@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 import { catchError, finalize } from 'rxjs';
 import { Base } from 'src/app/services/base-api/base';
 import urlConfig from '../../../config/url.config.json';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss'],
+  templateUrl: './sign-up.page.html',
+  styleUrls: ['./sign-up.page.scss'],
   standalone: false,
 })
-export class SignUpComponent implements OnInit {
+export class SignUpPage implements OnInit {
   signupForm: FormGroup;
   showPassword: boolean | undefined;
   showConfirmPassword: boolean | undefined;
@@ -25,13 +26,17 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private baseApi: Base,
-    private router: Router
+    private router: Router,
+    private cookieService: CookieService
   ) {
     this.signupForm = this.fb.group(
       {
         fullName: ['', [Validators.required, Validators.minLength(2)]],
         userName: ['', [Validators.required, Validators.minLength(2)]],
-        number: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+        phoneNumber: [
+          '',
+          [Validators.required, Validators.pattern(/^[0-9]{10}$/)],
+        ],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
@@ -76,7 +81,7 @@ export class SignUpComponent implements OnInit {
     //     password: data.password,
     //     email: data.email,
     //     username: data.userName,
-    //     phoneNumber: data.number,
+    //     phoneNumber: data.phoneNumber,
     //   };
 
     //   this.baseService.signup(register).subscribe({
@@ -133,7 +138,7 @@ export class SignUpComponent implements OnInit {
           // this.toastService.presentToast("OTP Sent succesfully ", "success");
           // this.api.submitotp({"email":res?.data?.email,"emailOTP":String(res?.data?.emailOTP)})
 
-          // this.cookieService.set("asp_dphn", data?.phoneNumber)
+          this.cookieService.set('driver_phone', data?.phoneNumber);
           this.router.navigateByUrl('/otp');
         }
       });

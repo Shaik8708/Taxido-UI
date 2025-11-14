@@ -80,15 +80,15 @@
               type="number"
               class="form-control"
               id="Inputnumner"
-              formControlName="number"
+              formControlName="phoneNumber"
               placeholder="Enter your number"
             />
             <i class="iconsax icon" data-icon="phone"></i>
           </div>
           <small
             *ngIf="
-              signupForm.get('number')?.touched &&
-              signupForm.get('number')?.invalid
+              signupForm.get('phoneNumber')?.touched &&
+              signupForm.get('phoneNumber')?.invalid
             "
             class="text-danger"
             >Enter a valid 10-digit number</small
