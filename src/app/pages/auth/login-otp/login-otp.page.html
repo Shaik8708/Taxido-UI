@@ -25,11 +25,11 @@
     <div class="custom-container white-background pb-2">
       <div class="auth-title mt-0">
         <div class="loader-line"></div>
-        <h2>Let’s you in</h2>
+        <h2>Login with OTP</h2>
         <h6>Hey, You have been missed !</h6>
       </div>
 
-      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="form-group mt-0">
           <label class="form-label" for="validationDefault01"
             >Mobile Number</label
@@ -56,28 +56,6 @@
               <i class="iconsax icon" data-icon="phone"></i>
             </div>
           </div>
-          <div class="d-flex gap-2">
-            <div class="form-group position-relative mt-2 w-100">
-              <input
-                [type]="showPassword ? 'text' : 'password'"
-                class="form-control"
-                id="pass"
-                placeholder="Enter your password"
-                required
-                formControlName="password"
-              />
-              <i
-                class="iconsax icon"
-                data-icon="password-check"
-                (click)="hideShowPass()"
-                tabindex="0"
-                role="button"
-                [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
-                (keydown.enter)="hideShowPass()"
-                style="cursor: pointer"
-              ></i>
-            </div>
-          </div>
         </div>
 
         <div class="division">
@@ -86,34 +64,11 @@
 
         <div class="flex-align-center gap-3">
           <a
-            [routerLink]="['/login-otp']"
+            [routerLink]="['/login']"
             class="btn theme-btn google-btn w-100 flex-center gap-2"
           >
-            Login with OTP</a
+            Login with password</a
           >
-          <!-- <a
-            href="https://www.google.co.in/"
-            class="btn theme-btn google-btn w-50 flex-center gap-2"
-          >
-            <img
-              class="img-fluid google"
-              src="../../assets/images/svg/google.svg"
-              alt="google"
-            />
-            with Google</a
-          >
-
-          <a
-            href="https://www.apple.com/"
-            class="btn theme-btn google-btn w-50 flex-center gap-2"
-          >
-            <img
-              class="img-fluid google"
-              src="../../assets/images/svg/apple.svg"
-              alt="apple"
-            />
-            with Apple</a
-          > -->
         </div>
         <!-- <div class="flex-align-center gap-3">
           <a
@@ -142,7 +97,7 @@
         </div> -->
 
         <button type="submit" class="btn theme-btn w-100 auth-btn">
-          Login
+          Get OTP
         </button>
         <h6 class="content-color fw-normal my-3 text-center">
           New User ?

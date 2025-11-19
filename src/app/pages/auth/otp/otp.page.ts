@@ -71,9 +71,9 @@ export class OtpPage implements OnInit {
     // console.log('Stored Data:', this.phoneNumber);
     this.phoneNumber = this.cookieService?.get('driver_phone');
 
-    // if (!this.phoneNumber) {
-    //   this.router.navigateByUrl('/login');
-    // }
+    if (!this.phoneNumber) {
+      this.router.navigateByUrl('/login');
+    }
   }
 
   async onSubmit() {
@@ -83,29 +83,32 @@ export class OtpPage implements OnInit {
       phoneOTP: this.getOtpFromUI(),
     };
 
-    this.baseApi
-      .post(urlConfig.dealerLoginPath, data)
-      .pipe(
-        finalize(() => {
-          // this.loadinService.end();
-        }),
-        catchError((err) => {
-          if (err?.error?.message == 'Error From Fast To Sms') {
-            // this.toastService.presentToast("Spamming detected", "danger");
-          } else {
-            // this.toastService.presentToast(err?.error?.message, "danger");
+    if (data.phoneOTP.length !== 0 && data.phoneNumber.length !== 0) {
+      this.baseApi
+        .post(urlConfig.driverLoginPath, data)
+        .pipe(
+          finalize(() => {
+            // this.loadinService.end();
+          }),
+          catchError((err) => {
+            if (err?.error?.message == 'Error From Fast To Sms') {
+              // this.toastService.presentToast("Spamming detected", "danger");
+            } else {
+              // this.toastService.presentToast(err?.error?.message, "danger");
+            }
+            throw err;
+          })
+        )
+        .subscribe((res: any) => {
+          if (res?.status == 'success') {
+            this.cookieService.set('driver_actkn', res?.data?.accessToken);
+            this.cookieService.set('driver_rftkn', res?.data?.refreshToken);
+            // this.router.navigateByUrl('/dashboard');
+            this.router.navigate(['dashboard']);
+            // this.getDealerDetailsByPhoneNumber(this.phoneNumber, res);
           }
-          throw err;
-        })
-      )
-      .subscribe((res: any) => {
-        if (res?.status == 'success') {
-          this.cookieService.set('driver_actkn', res?.data?.accessToken);
-          this.cookieService.set('driver_rftkn', res?.data?.refresulthToken);
-          this.router.navigateByUrl('/dashboard');
-          // this.getDealerDetailsByPhoneNumber(this.phoneNumber, res);
-        }
-      });
+        });
+    }
   }
 
   removeCookie() {
@@ -188,10 +191,10 @@ export class OtpPage implements OnInit {
       });
   }
 
-  getDealerDetailsByPhoneNumber(phoneNumber: any, result: any) {
+  getDriverDetailsByPhoneNumber(phoneNumber: any, result: any) {
     this.baseApi
       .get(
-        `${urlConfig.getAllPath}?collectionName=${urlConfig.dealerDetails}&phoneNumber=${phoneNumber}`
+        `${urlConfig.getAllPath}?collectionName=${urlConfig.driverDetails}&phoneNumber=${phoneNumber}`
       )
       .pipe(
         finalize(() => {}),
@@ -202,8 +205,8 @@ export class OtpPage implements OnInit {
       )
       .subscribe((detailsRes: any) => {
         if (detailsRes?.data?.docs?.length == 0) {
-          if (result?.data?.accountType == 'dealer') {
-            this.createDealerDetails(result);
+          if (result?.data?.accountType == 'driver') {
+            this.createDriverDetails(result);
           } else {
             this.cookieService.deleteAll();
             // this.toastService.presentToast("You are not registered partner, Please login with partner credentials.", "danger");
@@ -214,7 +217,7 @@ export class OtpPage implements OnInit {
           if (
             detailsRes?.data?.docs?.length > 0 &&
             detailsRes?.data?.docs[0]?.status == 'true' &&
-            result?.data?.accountType == 'dealer'
+            result?.data?.accountType == 'driver'
           ) {
             // this.toastService.presentToast("Login Successfull", "success");
             this.setCookies(result, detailsRes?.data?.docs[0]);
@@ -236,14 +239,14 @@ export class OtpPage implements OnInit {
       });
   }
 
-  createDealerDetails(dealerLoginData: any) {
+  createDriverDetails(driverLoginData: any) {
     let payload = {
-      collectionName: urlConfig.dealerDetails,
+      collectionName: urlConfig.driverDetails,
       phoneNumber: this.phoneNumber,
-      email: dealerLoginData?.data?.email,
-      dealerId: dealerLoginData?.data?._id,
-      username: dealerLoginData?.data?.username,
-      fullName: dealerLoginData?.data?.fullName,
+      email: driverLoginData?.data?.email,
+      driverId: driverLoginData?.data?._id,
+      username: driverLoginData?.data?.username,
+      fullName: driverLoginData?.data?.fullName,
       isResgistered: 'true',
       status: 'true',
       initialVerification: 'false',
@@ -263,11 +266,11 @@ export class OtpPage implements OnInit {
       .subscribe((detailsRes: any) => {
         if (detailsRes?.status == 'success') {
           // this.cookieService.deleteAll();
-          this.setCookies(dealerLoginData, detailsRes?.data);
+          this.setCookies(driverLoginData, detailsRes?.data);
 
           // this.toastService.presentToast("Login Successfull", "success");
           this.router.navigateByUrl('/leads');
-        } else if (dealerLoginData?.data?.accountType != 'dealer') {
+        } else if (driverLoginData?.data?.accountType != 'driver') {
           this.cookieService.deleteAll();
           // this.toastService.presentToast("You are not registered partner, Please login with partner credentials.", "danger");
         } else {
@@ -306,24 +309,24 @@ export class OtpPage implements OnInit {
     this.cookieService.set('driver_email', result?.data?.email, expirationDate);
     this.cookieService.set('driver_id', result?.data?._id, expirationDate);
 
-    this.cookieService.set(
-      'asp_d_dbials',
-      detailsRes?.shopRegisteredName,
-      expirationDate
-    );
-    this.cookieService.set(
-      'asp_d_dbialsfn',
-      detailsRes?.fullName,
-      expirationDate
-    );
-    this.cookieService.set('asp_dp_cn', detailsRes?.city, expirationDate);
-    this.cookieService.set('asp_dp_ci', detailsRes?.cityId, expirationDate);
-    this.cookieService.set(
-      'asp_d_dbialsa',
-      detailsRes?.shopAddress,
-      expirationDate
-    );
-    this.cookieService.set('asp_d_dts1d', detailsRes?._id, expirationDate);
+    // this.cookieService.set(
+    //   'asp_d_dbials',
+    //   detailsRes?.shopRegisteredName,
+    //   expirationDate
+    // );
+    // this.cookieService.set(
+    //   'asp_d_dbialsfn',
+    //   detailsRes?.fullName,
+    //   expirationDate
+    // );
+    // this.cookieService.set('asp_dp_cn', detailsRes?.city, expirationDate);
+    // this.cookieService.set('asp_dp_ci', detailsRes?.cityId, expirationDate);
+    // this.cookieService.set(
+    //   'asp_d_dbialsa',
+    //   detailsRes?.shopAddress,
+    //   expirationDate
+    // );
+    // this.cookieService.set('asp_d_dts1d', detailsRes?._id, expirationDate);
 
     // Automatically remove the cookie after 2 hours
     setTimeout(() => {

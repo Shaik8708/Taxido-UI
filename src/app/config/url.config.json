@@ -6,9 +6,13 @@
   "updatePath": "/factory/update/",
   "dealerRegisterPath": "/dealer/register",
   "dealerLoginPath": "/dealer/login",
+  "driverRegisterPath": "/driver/register",
+  "driverLoginPath": "/driver/login",
   "otpSentDealerPath": "/dealer/refresh-otp",
+  "otpSentDriverPath": "/driver/refresh-otp",
 
   "dealerDetails": "dealerDetails",
+  "driverDetails": "driverDetails",
   "ppeProducts": "ppeProducts",
   "location": "location",
   "category": "category",

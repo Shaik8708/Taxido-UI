@@ -118,29 +118,31 @@ export class SignUpPage implements OnInit {
     // }
     // this.loader.start()
     // this.api.submitRegister(data)
-    this.baseApi
-      .post(urlConfig.dealerRegisterPath, data)
-      .pipe(
-        finalize(() => {
-          // this.loader.end();
-        }),
-        catchError((err) => {
-          if (err?.error?.message == 'Error From Fast To Sms') {
-            // this.toastService.presentToast("Spamming detected", "danger");
-          } else {
-            // this.toastService.presentToast(err?.error?.message, "danger");
-          }
-          throw err;
-        })
-      )
-      .subscribe((res: any) => {
-        if (res?.status == 'success') {
-          // this.toastService.presentToast("OTP Sent succesfully ", "success");
-          // this.api.submitotp({"email":res?.data?.email,"emailOTP":String(res?.data?.emailOTP)})
+    if (this.signupForm.valid) {
+      this.baseApi
+        .post(urlConfig.driverRegisterPath, data)
+        .pipe(
+          finalize(() => {
+            // this.loader.end();
+          }),
+          catchError((err) => {
+            if (err?.error?.message == 'Error From Fast To Sms') {
+              // this.toastService.presentToast("Spamming detected", "danger");
+            } else {
+              // this.toastService.presentToast(err?.error?.message, "danger");
+            }
+            throw err;
+          })
+        )
+        .subscribe((res: any) => {
+          if (res?.status == 'success') {
+            // this.toastService.presentToast("OTP Sent succesfully ", "success");
+            // this.api.submitotp({"email":res?.data?.email,"emailOTP":String(res?.data?.emailOTP)})
 
-          this.cookieService.set('driver_phone', data?.phoneNumber);
-          this.router.navigateByUrl('/otp');
-        }
-      });
+            this.cookieService.set('driver_phone', data?.phoneNumber);
+            this.router.navigateByUrl('/otp');
+          }
+        });
+    }
   }
 }

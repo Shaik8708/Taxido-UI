@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-my-rides',
-  templateUrl: './my-rides.component.html',
-  styleUrls: ['./my-rides.component.scss'],
+  templateUrl: './my-rides.page.html',
+  styleUrls: ['./my-rides.page.scss'],
   standalone: false,
 })
-export class MyRidesComponent implements OnInit {
+export class MyRidesPage implements OnInit {
   constructor() {}
 
   ngOnInit() {}

@@ -7,12 +7,12 @@ import { catchError, finalize } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-login-otp',
+  templateUrl: './login-otp.page.html',
+  styleUrls: ['./login-otp.page.scss'],
   standalone: false,
 })
-export class LoginPage implements OnInit {
+export class LoginOtpPage implements OnInit {
   loginForm: FormGroup;
   errorMessage = '';
   showPassword: boolean = false;
@@ -34,26 +34,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  onSubmit() {
-    // if (this.loginForm.valid) {
-    //   this.baseService.login(this.loginForm.value).subscribe({
-    //     next: (res) => {
-    //       if (res?.token) {
-    //         this.baseService.saveToken(res.token);
-    // this.router.navigate(['/dashboard']);
-    //       } else {
-    //         this.errorMessage = 'Invalid response from server';
-    //       }
-    //     },
-    //     error: (err) => {
-    //       this.errorMessage = err.error?.message || 'Login failed. Try again.';
-    //     },
-    //   });
-    // }
-    let data = this.loginForm.value;
+  submit() {
     // this.loader.showLoading("Logging In")
     this.baseApi
-      .post(`${urlConfig.driverLoginPath}`, data)
+      .post(`${urlConfig.otpSentDriverPath}`, this.loginForm.value)
       .pipe(
         catchError((error) => {
           alert(error?.error?.message);
@@ -72,7 +56,7 @@ export class LoginPage implements OnInit {
         if (res?.status == 'success') {
           this.cookieService.set(
             'driver_phone',
-            data?.phoneNumber,
+            res?.data?.phoneNumber,
             expirationDate
           );
           this.cookieService.set(
@@ -117,7 +101,11 @@ export class LoginPage implements OnInit {
           //   expirationDate
           // );
           // $('#successfullyModal').modal('show');
-          this.router.navigate(['/dashboard']);
+          // this.cookieService.set(
+          //   'driver_phone',
+          //   this.loginForm.controls['phoneNumber'].value
+          // );
+          this.router.navigateByUrl('/otp');
         } else if (res.message == 'Your not a existing. Verify OTP!') {
           // $('#notExistingUser').modal('show');
         }
