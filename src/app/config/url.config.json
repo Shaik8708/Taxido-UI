@@ -7,6 +7,7 @@
   "dealerRegisterPath": "/dealer/register",
   "dealerLoginPath": "/dealer/login",
   "driverRegisterPath": "/driver/register",
+  "driverCreateAccountPath": "/driver-account/createAccount",
   "driverLoginPath": "/driver/login",
   "otpSentDealerPath": "/dealer/refresh-otp",
   "otpSentDriverPath": "/driver/refresh-otp",

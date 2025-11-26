@@ -105,7 +105,11 @@ const routes: Routes = [
         (m) => m.LoginOtpPageModule
       ),
     canActivate: [AuthGuard],
+  },  {
+    path: 'driver-profile',
+    loadChildren: () => import('./pages/components/driver-profile/driver-profile.module').then( m => m.DriverProfilePageModule)
   },
+
 ];
 
 @NgModule({

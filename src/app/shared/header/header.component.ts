@@ -64,6 +64,8 @@ export class HeaderComponent implements OnInit {
       this.type = 'auth';
       this.showBack = url.includes('/otp');
       this.showLogo = true;
+    } else {
+      this.showLogo = true;
     }
   }
 }

@@ -117,7 +117,11 @@ export class LoginPage implements OnInit {
           //   expirationDate
           // );
           // $('#successfullyModal').modal('show');
-          this.router.navigate(['/dashboard']);
+          // if (res.isAdminprofile) {
+          this.router.navigate(['/driver-profile']);
+          // } else {
+          //   this.router.navigate(['/profile-setup']);
+          // }
         } else if (res.message == 'Your not a existing. Verify OTP!') {
           // $('#notExistingUser').modal('show');
         }

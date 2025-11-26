@@ -1,0 +1,59 @@
+/* Styles for driver profile picture and footer */
+.profile-pic-label {
+  display: flex;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(0,0,0,0.06);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #f6f6f6;
+  margin: 0 auto; /* center inside text-center container */
+}
+.profile-pic {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.profile-placeholder {
+	font-size: 36px;
+	color: rgba(0,0,0,0.45);
+}
+.d-none {
+	display: none !important;
+}
+
+/* Ensure save button is visible and has spacing */
+.save-footer-btn {
+	--padding-top: 12px;
+	--padding-bottom: 12px;
+	/* Use app theme color variables so footer matches other theme buttons */
+	--background: rgba(var(--theme-color), 1);
+	--color: #ffffff;
+	--border-radius: 6px;
+}
+
+/* Add bottom padding to content so footer doesn't overlap form */
+:host ::ng-deep ion-content {
+	/* Make room for footer so final form elements (e.g. Sign in link) remain visible */
+	--padding-bottom: 120px;
+}
+
+/* Ensure the sign-in link isn't overlapped on small screens */
+.auth-form h6 {
+	margin-bottom: 16px;
+}
+
+/* Hide scrollbar but keep scrolling for ion-content (page-scoped) */
+:host ::ng-deep ion-content::part(scroll) {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+:host ::ng-deep ion-content::part(scroll)::-webkit-scrollbar {
+	display: none; /* WebKit */
+	width: 0;
+	height: 0;
+}

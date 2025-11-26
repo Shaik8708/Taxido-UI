@@ -28,7 +28,7 @@ export class DashboardPage implements OnInit {
     // this.api.getUserProfile(userId)
     const payload = {
       // collectionName: urlConfig.ppeProducts
-      collectionName: 'driver',
+      collectionName: 'leads',
       // dealerId:this.dealerId
     };
     this.baseApi

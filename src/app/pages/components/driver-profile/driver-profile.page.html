@@ -1,0 +1,289 @@
+<!-- header starts -->
+<!-- <header id="header" class="auth-header">
+  <div class="custom-container">
+    <div class="header-panel pb-0">
+      <img
+        class="img-fluid mx-auto logo"
+        src="../../assets/images/logo/driver/driver-logo.png"
+        alt="logo"
+      />
+      <img
+        class="img-fluid mx-auto logo-dark"
+        src="../../assets/images/logo/driver/driver-logo-dark.png"
+        alt="logo"
+      />
+    </div>
+  </div>
+</header> -->
+<app-header></app-header>
+<!-- header end -->
+
+<!-- driver profile page starts -->
+<ion-content fullscreen class="auth-bg-image-box">
+  <div class="auth-bg-image"></div>
+  <div class="auth-content-bg auth-content-bg-bottom">
+    <div class="custom-container white-background pb-2">
+      <div class="auth-title">
+        <div class="loader-line"></div>
+        <h2>Profile details</h2>
+        <h6>Explore your life by joining with Ride.</h6>
+      </div>
+
+      <form
+        class="auth-form"
+        [formGroup]="driverProfileForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <!-- Profile picture (first input) -->
+        <div class="form-group text-center mb-3">
+          <label class="form-label mb-2">Profile Picture</label>
+
+          <div class="mb-2">
+            <label
+              for="profilePicInput"
+              class="profile-pic-label"
+              role="button"
+              tabindex="0"
+              (keydown.enter)="openProfilePicPicker()"
+            >
+              <img
+                *ngIf="driverProfileForm.get('profilePicture')?.value; else placeholder"
+                [src]="driverProfileForm.get('profilePicture')?.value"
+                alt="profile"
+                class="profile-pic"
+              />
+              <ng-template #placeholder>
+                <div class="profile-placeholder">📷</div>
+              </ng-template>
+            </label>
+          </div>
+
+          <input
+            id="profilePicInput"
+            type="file"
+            accept="image/*"
+            (change)="onProfilePictureSelected($event)"
+            class="d-none"
+          />
+
+          <small
+            *ngIf="driverProfileForm.get('profilePicture')?.hasError('maxSize')"
+            class="text-danger"
+            >Image must be smaller than 2MB</small
+          >
+          <small
+            *ngIf="driverProfileForm.get('profilePicture')?.hasError('required')"
+            class="text-danger"
+            >Profile picture is required</small
+          >
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label class="form-label mb-2" for="firstName">First Name</label>
+              <input
+                type="text"
+                id="firstName"
+                class="form-control"
+                formControlName="firstName"
+                placeholder="First name"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label class="form-label mb-2" for="lastName">Last Name</label>
+              <input
+                type="text"
+                id="lastName"
+                class="form-control"
+                formControlName="lastName"
+                placeholder="Last name"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label class="form-label mb-2" for="dob">Date of Birth</label>
+              <input
+                type="date"
+                id="dob"
+                class="form-control"
+                formControlName="dob"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label class="form-label mb-2" for="gender">Gender</label>
+              <select id="gender" class="form-control" formControlName="gender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label class="form-label mb-2" for="city">City</label>
+              <input
+                type="text"
+                id="city"
+                class="form-control"
+                formControlName="city"
+                placeholder="City"
+              />
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label class="form-label mb-2" for="state">State</label>
+              <input
+                type="text"
+                id="state"
+                class="form-control"
+                formControlName="state"
+                placeholder="State"
+              />
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+          <label class="form-label mb-2" for="vehicleType">Vehicle Type</label>
+          <input
+            type="text"
+            id="vehicleType"
+            class="form-control"
+            formControlName="vehicleType"
+            placeholder="E.g. SUV"
+          />
+          <small
+            *ngIf="driverProfileForm.get('vehicleType')?.touched && driverProfileForm.get('vehicleType')?.hasError('required')"
+            class="text-danger"
+            >Vehicle type is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mb-2" for="vehicleName">Vehicle Name</label>
+          <input
+            type="text"
+            id="vehicleName"
+            class="form-control"
+            formControlName="vehicleName"
+            placeholder="E.g. Mahindra XUV500"
+          />
+          <small
+            *ngIf="driverProfileForm.get('vehicleName')?.touched && driverProfileForm.get('vehicleName')?.hasError('required')"
+            class="text-danger"
+            >Vehicle name is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mb-2" for="vehicleNumber"
+            >Vehicle Number</label
+          >
+          <input
+            type="text"
+            id="vehicleNumber"
+            class="form-control"
+            formControlName="vehicleNumber"
+            placeholder="Vehicle number"
+          />
+          <small
+            *ngIf="driverProfileForm.get('vehicleNumber')?.touched && driverProfileForm.get('vehicleNumber')?.hasError('required')"
+            class="text-danger"
+            >Vehicle number is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mb-2" for="vehicleRc">Vehicle RC</label>
+          <input
+            type="text"
+            id="vehicleRc"
+            class="form-control"
+            formControlName="vehicleRc"
+            placeholder="Vehicle RC"
+          />
+          <small
+            *ngIf="driverProfileForm.get('vehicleRc')?.touched && driverProfileForm.get('vehicleRc')?.hasError('required')"
+            class="text-danger"
+            >Vehicle RC is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mb-2" for="driverDL">Driver DL</label>
+          <input
+            type="text"
+            id="driverDL"
+            class="form-control"
+            formControlName="driverDL"
+            placeholder="Driver license number"
+          />
+          <small
+            *ngIf="driverProfileForm.get('driverDL')?.touched && driverProfileForm.get('driverDL')?.hasError('required')"
+            class="text-danger"
+            >Driver DL is required</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label mb-2" for="aadharNumber"
+            >Aadhar Number</label
+          >
+          <input
+            type="text"
+            id="aadharNumber"
+            class="form-control"
+            formControlName="aadharNumber"
+            placeholder="12 digit Aadhar"
+          />
+          <small
+            *ngIf="driverProfileForm.get('aadharNumber')?.touched && driverProfileForm.get('aadharNumber')?.hasError('required')"
+            class="text-danger"
+            >Aadhar is required</small
+          >
+          <small
+            *ngIf="driverProfileForm.get('aadharNumber')?.touched && driverProfileForm.get('aadharNumber')?.hasError('pattern')"
+            class="text-danger"
+            >Aadhar must be 12 digits</small
+          >
+        </div>
+
+        <button
+          type="submit"
+          class="btn theme-btn w-100 auth-btn"
+          [disabled]="driverProfileForm.invalid"
+        >
+          Save Profile
+        </button>
+      </form>
+    </div>
+  </div>
+</ion-content>
+<!-- driver profile page end -->
+
+<!-- Sticky footer Save button for mobile/visibility safety -->
+<!-- <ion-footer>
+  <button
+    type="submit"
+    class="btn theme-btn w-100 auth-btn"
+    (click)="onSubmit()"
+  >
+    Save Profile
+  </button>
+</ion-footer> -->
