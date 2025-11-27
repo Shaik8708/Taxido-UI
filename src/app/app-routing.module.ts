@@ -109,6 +109,10 @@ const routes: Routes = [
     path: 'driver-profile',
     loadChildren: () => import('./pages/components/driver-profile/driver-profile.module').then( m => m.DriverProfilePageModule)
   },
+  {
+    path: 'driver-wallet',
+    loadChildren: () => import('./pages/components/driver-wallet/driver-wallet.module').then( m => m.DriverWalletPageModule)
+  },
 
 ];
 

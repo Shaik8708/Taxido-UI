@@ -57,3 +57,16 @@
 	width: 0;
 	height: 0;
 }
+
+/* Ensure ion-content background remains the default (light) for this page
+	 - Some global dark-mode variables set --white to a dark color; force
+		 the page container and the inner content card to use white so layout
+		 doesn't appear black. This is page-scoped. */
+:host ::ng-deep ion-content.auth-bg-image-box {
+	background: transparent !important;
+	--background: transparent !important;
+}
+
+:host ::ng-deep .auth-content-bg {
+	background-color: #ffffff !important;
+}

@@ -50,6 +50,9 @@ export class HeaderComponent implements OnInit {
     } else if (url.includes('/notification')) {
       this.showBack = true;
       this.title = 'Notifications';
+    } else if (url.includes('/driver-wallet')) {
+      this.showBack = true;
+      this.title = 'My Wallet';
     } else if (url.includes('/setting')) {
       this.showMenu = true;
       this.title = 'Settings';
