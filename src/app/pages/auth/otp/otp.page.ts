@@ -105,11 +105,11 @@ export class OtpPage implements OnInit {
             this.cookieService.set('driver_rftkn', res?.data?.refreshToken);
             // this.router.navigateByUrl('/dashboard');
             this.router.navigate(['dashboard']);
-            // if (res.isAdminprofile) {
-            this.router.navigate(['/dashboard']);
-            // } else {
-            //   this.router.navigate(['/profile-setup']);
-            // }
+            if (res.data.accountCompleted) {
+              this.router.navigate(['/dashboard']);
+            } else {
+              this.router.navigate(['/driver-profile']);
+            }
             // this.getDealerDetailsByPhoneNumber(this.phoneNumber, res);
           }
         });

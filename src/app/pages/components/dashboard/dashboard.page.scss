@@ -1,0 +1,14 @@
+.upcoming-ride-section {
+    background-color: white;
+}
+
+/* Hide scrollbar but keep scrolling for ion-content (page-scoped) */
+:host ::ng-deep ion-content::part(scroll) {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+:host ::ng-deep ion-content::part(scroll)::-webkit-scrollbar {
+	display: none; /* WebKit */
+	width: 0;
+	height: 0;
+}

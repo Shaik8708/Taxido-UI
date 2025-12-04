@@ -105,15 +105,49 @@ const routes: Routes = [
         (m) => m.LoginOtpPageModule
       ),
     canActivate: [AuthGuard],
-  },  {
+  },
+  {
     path: 'driver-profile',
-    loadChildren: () => import('./pages/components/driver-profile/driver-profile.module').then( m => m.DriverProfilePageModule)
+    loadChildren: () =>
+      import('./pages/components/driver-profile/driver-profile.module').then(
+        (m) => m.DriverProfilePageModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'driver-wallet',
-    loadChildren: () => import('./pages/components/driver-wallet/driver-wallet.module').then( m => m.DriverWalletPageModule)
+    loadChildren: () =>
+      import('./pages/components/driver-wallet/driver-wallet.module').then(
+        (m) => m.DriverWalletPageModule
+      ),
+    canActivate: [AuthGuard],
   },
+  {
+    path: 'pending-ride-details',
+    loadChildren: () =>
+      import(
+        './pages/components/pending-ride-details/pending-ride-details.module'
+      ).then((m) => m.PendingRideDetailsPageModule),
 
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'complete-ride-details',
+    loadChildren: () =>
+      import(
+        './pages/components/complete-ride-details/complete-ride-details.module'
+      ).then((m) => m.CompleteRideDetailsPageModule),
+
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'cancel-ride-details',
+    loadChildren: () =>
+      import(
+        './pages/components/cancel-ride-details/cancel-ride-details.module'
+      ).then((m) => m.CancelRideDetailsPageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

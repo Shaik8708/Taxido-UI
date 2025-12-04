@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 declare var bootstrap: any; // 👈 only if you're using Bootstrap offcanvas
 
@@ -12,7 +13,7 @@ declare var bootstrap: any; // 👈 only if you're using Bootstrap offcanvas
 export class SideBarComponent implements OnInit {
   isOpen = false; // use this if your sidebar toggles via *ngIf or CSS
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cookieService: CookieService) {}
 
   ngOnInit() {
     // Close sidebar whenever route changes
@@ -37,5 +38,15 @@ export class SideBarComponent implements OnInit {
 
   closeSidebar() {
     this.isOpen = false;
+  }
+
+  logout() {
+    // this.router.navigate(['/login']);
+    this.cookieService.deleteAll('/');
+
+    localStorage.clear();
+    sessionStorage.clear();
+
+    this.router.navigate(['/login']);
   }
 }
