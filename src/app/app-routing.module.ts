@@ -148,6 +148,14 @@ const routes: Routes = [
       ).then((m) => m.CancelRideDetailsPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'active-ride-details',
+    loadChildren: () =>
+      import(
+        './pages/components/active-ride-details/active-ride-details.module'
+      ).then((m) => m.ActiveRideDetailsPageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

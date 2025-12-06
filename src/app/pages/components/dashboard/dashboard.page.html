@@ -489,12 +489,15 @@
     class="custom-container d-flex flex-column justify-content-center align-items-center text-center"
     style="min-height: 70vh"
   >
-    <img src="assets/images/error.svg" width="180" class="mb-3" />
+    <img src="assets/images/svg/alert.svg" width="100" class="mb-3" />
 
-    <h3 class="text-danger">Oops. Data didn’t load.</h3>
+    <h3 class="error-color">Oops. Data didn’t load.</h3>
 
     <p class="mb-3">{{ errorMessage }}</p>
 
-    <button class="btn btn-primary" (click)="getAllLeads()">Try Again</button>
+    <div class="reason-part mt-3">
+      <h4 class="fw-medium error-color"></h4>
+      <p (click)="getAllLeads()" style="cursor: pointer">Try Again</p>
+    </div>
   </div>
 </ng-template>

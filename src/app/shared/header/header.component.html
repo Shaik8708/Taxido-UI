@@ -13,7 +13,7 @@
           <i class="iconsax icon-btn" data-icon="text-align-left"></i>
         </a>
 
-        <a *ngIf="showBack" [routerLink]="['/dashboard']">
+        <a *ngIf="showBack" (click)="goBack()">
           <i class="iconsax icon-btn" data-icon="chevron-left"></i>
         </a>
 
@@ -45,7 +45,7 @@
 <header *ngIf="type === 'auth'" id="header" class="auth-header">
   <div class="custom-container">
     <div class="header-panel">
-      <a *ngIf="showBack" [routerLink]="['/login']">
+      <a *ngIf="showBack" (click)="goBack()">
         <i class="iconsax icon-btn" data-icon="chevron-left"></i>
       </a>
 

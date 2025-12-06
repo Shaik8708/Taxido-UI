@@ -12,181 +12,184 @@
 <app-header></app-header>
 <!-- header end -->
 
-<!-- profile section starts -->
-<section class="setting-section">
-  <div class="custom-container">
-    <div class="profile-section white-background rounded-2 p-3">
-      <div class="flex-align-center gap-2">
-        <div class="profile-image m-0">
+<ion-content style="--background: #f8f9fa">
+  <!-- profile section starts -->
+  <section class="setting-section">
+    <div class="custom-container">
+      <div class="profile-section white-background rounded-2 p-3">
+        <div class="flex-align-center gap-2">
+          <div class="profile-image m-0">
+            <img
+              class="img-fluid profile-pic"
+              src="../../assets/images/profile/p8.png"
+              alt="p8"
+            />
+          </div>
+          <div class="profile-content">
+            <h3 class="profile-name">Jonathan Higgins</h3>
+            <h6 class="fw-normal content-color mt-1">jonathan01@gmail.com</h6>
+          </div>
+        </div>
+        <div class="wallet-part">
+          <h6>My Wallet Balance</h6>
+          <h5>$1,568.23</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-container">
+      <h4 class="fw-medium title-color text-capitalize mt-4 mb-2">General</h4>
+      <div class="profile-list">
+        <ul class="setting-listing">
+          <li class="w-100">
+            <a href="profile-setting.html" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="user-1"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>Profile settings</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+
+          <li class="w-100">
+            <a routerLink="/driver-wallet" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="location"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>My wallet</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+          <li class="w-100">
+            <a href="offer.html" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="ticket-1"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>Offer list</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+
+          <li class="w-100">
+            <a href="app-setting.html" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="password-check"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>App setting</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <h4 class="fw-medium title-color text-capitalize mt-4 mb-2">
+        Registration details
+      </h4>
+      <div class="profile-list">
+        <ul class="setting-listing">
+          <li class="w-100">
+            <a href="driver-registration-document.html" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="document-upload"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>Document registration</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+
+          <li class="w-100">
+            <a href="driver-vehicle-details.html" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="car"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>Vehicle registration</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+          <li class="w-100">
+            <a href="driver-bank-registration-details.html" class="setting-box">
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="bank"> </i>
+              </div>
+              <div class="setting-content">
+                <h5>Bank details</h5>
+                <i class="iconsax icon" data-icon="chevron-right"> </i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a href="../user-app/index.html" class="driver-banner-part">
+        <div class="driver-img">
           <img
-            class="img-fluid profile-pic"
-            src="../../assets/images/profile/p8.png"
-            alt="p8"
+            class="img-fluid driver-icon"
+            src="../../assets/images/svg/user-vector-img.svg"
+            alt=""
           />
         </div>
-        <div class="profile-content">
-          <h3 class="profile-name">Jonathan Higgins</h3>
-          <h6 class="fw-normal content-color mt-1">jonathan01@gmail.com</h6>
+        <div class="driver-content">
+          <h4 class="theme-color fw-medium">Become a user</h4>
+          <i class="iconsax icon" data-icon="chevron-right"> </i>
         </div>
-      </div>
-      <div class="wallet-part">
-        <h6>My Wallet Balance</h6>
-        <h5>$1,568.23</h5>
+      </a>
+
+      <h4 class="fw-medium error-color text-capitalize mt-4 mb-2">
+        Alert zone
+      </h4>
+      <div class="profile-list alert-list">
+        <ul class="setting-listing">
+          <li class="w-100">
+            <a
+              href="#"
+              class="setting-box"
+              data-bs-toggle="modal"
+              data-bs-target="#delete"
+            >
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="user-2-remove"> </i>
+              </div>
+              <div class="setting-content">
+                <h5 class="error-color">Delete account</h5>
+              </div>
+            </a>
+          </li>
+
+          <li class="w-100">
+            <a
+              href="#"
+              class="setting-box"
+              data-bs-toggle="modal"
+              data-bs-target="#logout"
+            >
+              <div class="setting-icon">
+                <i class="iconsax icon" data-icon="logout-2"> </i>
+              </div>
+              <div class="setting-content">
+                <h5 class="error-color">Logout</h5>
+              </div>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-
-  <div class="custom-container">
-    <h4 class="fw-medium title-color text-capitalize mt-4 mb-2">General</h4>
-    <div class="profile-list">
-      <ul class="setting-listing">
-        <li class="w-100">
-          <a href="profile-setting.html" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="user-1"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>Profile settings</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-
-        <li class="w-100">
-          <a routerLink="/driver-wallet" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="location"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>My wallet</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-        <li class="w-100">
-          <a href="offer.html" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="ticket-1"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>Offer list</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-
-        <li class="w-100">
-          <a href="app-setting.html" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="password-check"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>App setting</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <h4 class="fw-medium title-color text-capitalize mt-4 mb-2">
-      Registration details
-    </h4>
-    <div class="profile-list">
-      <ul class="setting-listing">
-        <li class="w-100">
-          <a href="driver-registration-document.html" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="document-upload"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>Document registration</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-
-        <li class="w-100">
-          <a href="driver-vehicle-details.html" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="car"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>Vehicle registration</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-        <li class="w-100">
-          <a href="driver-bank-registration-details.html" class="setting-box">
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="bank"> </i>
-            </div>
-            <div class="setting-content">
-              <h5>Bank details</h5>
-              <i class="iconsax icon" data-icon="chevron-right"> </i>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <a href="../user-app/index.html" class="driver-banner-part">
-      <div class="driver-img">
-        <img
-          class="img-fluid driver-icon"
-          src="../../assets/images/svg/user-vector-img.svg"
-          alt=""
-        />
-      </div>
-      <div class="driver-content">
-        <h4 class="theme-color fw-medium">Become a user</h4>
-        <i class="iconsax icon" data-icon="chevron-right"> </i>
-      </div>
-    </a>
-
-    <h4 class="fw-medium error-color text-capitalize mt-4 mb-2">Alert zone</h4>
-    <div class="profile-list alert-list">
-      <ul class="setting-listing">
-        <li class="w-100">
-          <a
-            href="#"
-            class="setting-box"
-            data-bs-toggle="modal"
-            data-bs-target="#delete"
-          >
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="user-2-remove"> </i>
-            </div>
-            <div class="setting-content">
-              <h5 class="error-color">Delete account</h5>
-            </div>
-          </a>
-        </li>
-
-        <li class="w-100">
-          <a
-            href="#"
-            class="setting-box"
-            data-bs-toggle="modal"
-            data-bs-target="#logout"
-          >
-            <div class="setting-icon">
-              <i class="iconsax icon" data-icon="logout-2"> </i>
-            </div>
-            <div class="setting-content">
-              <h5 class="error-color">Logout</h5>
-            </div>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-<!-- profile section starts -->
-
+  </section>
+  <!-- profile section starts -->
+</ion-content>
 <!-- panel-space start -->
-<section class="panel-space"></section>
+<!-- <section class="panel-space"></section> -->
 <!-- panel-space end -->
 
 <!-- bottom navbar start -->

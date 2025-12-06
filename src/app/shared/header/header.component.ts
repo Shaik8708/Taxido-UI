@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   showNotification = false;
   showMessages = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private location: Location) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((e: any) => {
@@ -27,6 +28,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  goBack() {
+    this.location.back();
+  }
 
   private configureHeader(url: string) {
     // Reset all
@@ -38,6 +43,35 @@ export class HeaderComponent implements OnInit {
     this.showNotification = false;
     this.showMessages = false;
 
+    // Pages that require back button
+    const backButtonPages = [
+      { path: '/notification', title: 'Notifications' },
+      { path: '/pending-ride-details', title: ' Details' },
+      { path: '/complete-ride-details', title: ' Details' },
+      { path: '/cancel-ride-details', title: ' Details' },
+      { path: '/active-ride-details', title: ' Details' },
+      { path: '/driver-wallet', title: 'My Wallet' },
+      { path: '/otp', title: 'OTP' },
+    ];
+
+    // Check if current page needs back button
+    const backPageConfig = backButtonPages.find((page) =>
+      url.includes(page.path)
+    );
+    if (backPageConfig) {
+      this.showBack = true;
+      this.title = backPageConfig.title;
+      if (
+        url.includes('/login') ||
+        url.includes('/signup') ||
+        url.includes('/otp')
+      ) {
+        this.type = 'auth';
+        this.showLogo = true;
+      }
+      return;
+    }
+
     if (url.includes('/dashboard')) {
       this.showMenu = true;
       this.showLogo = true;
@@ -47,25 +81,14 @@ export class HeaderComponent implements OnInit {
       this.showMessages = true;
       this.showNotification = true;
       this.title = 'My Ride';
-    } else if (url.includes('/notification')) {
-      this.showBack = true;
-      this.title = 'Notifications';
-    } else if (url.includes('/driver-wallet')) {
-      this.showBack = true;
-      this.title = 'My Wallet';
     } else if (url.includes('/setting')) {
       this.showMenu = true;
       this.title = 'Settings';
     } else if (url.includes('/active-ride')) {
       this.showMenu = true;
       this.title = 'Active Ride';
-    } else if (
-      url.includes('/login') ||
-      url.includes('/signup') ||
-      url.includes('/otp')
-    ) {
+    } else if (url.includes('/login') || url.includes('/signup')) {
       this.type = 'auth';
-      this.showBack = url.includes('/otp');
       this.showLogo = true;
     } else {
       this.showLogo = true;

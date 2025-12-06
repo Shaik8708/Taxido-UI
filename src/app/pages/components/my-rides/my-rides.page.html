@@ -2,7 +2,7 @@
 <app-header></app-header>
 <!-- header end -->
 
-<ion-content>
+<ion-content style="--background: #f8f9fa">
   <!-- my ride section starts -->
   <section class="section-b-space">
     <ul
@@ -70,7 +70,8 @@
               <div class="my-ride-box">
                 <div class="my-ride-head">
                   <a
-                    [href]="'pending-ride-details.html?id=' + (ride?._id || ride?.id)"
+                    [routerLink]="['/pending-ride-details']"
+                    [queryParams]="{ id: ride?._id || ride?.id }"
                     class="my-ride-img"
                   >
                     <img
@@ -83,7 +84,8 @@
                   <div class="my-ride-content flex-column">
                     <div class="flex-spacing">
                       <a
-                        [href]="'pending-ride-details.html?id=' + (ride?._id || ride?.id)"
+                        [routerLink]="['/pending-ride-details']"
+                        [queryParams]="{ id: ride?._id || ride?.id }"
                       >
                         <h6 class="title-color fw-medium">
                           {{ ride?.userId?.username || ride?.userName ||
@@ -195,7 +197,18 @@
                     </li>
                   </ul> -->
                 </div>
-                <a class="btn theme-btn w-100 mt-3">Pickup Customer</a>
+                <a
+                  [routerLink]="['/pending-ride-details']"
+                  [queryParams]="{ id: ride?._id || ride?.id }"
+                  class="btn theme-btn w-100 mt-3"
+                  >Start Ride</a
+                >
+                <a
+                  [routerLink]="['/pending-ride-details']"
+                  [queryParams]="{ id: ride?._id || ride?.id }"
+                  class="btn theme-btn w-100 mt-3"
+                  >Pickup Customer</a
+                >
               </div>
             </li>
           </ul>
@@ -223,7 +236,8 @@
               <div class="my-ride-box">
                 <div class="my-ride-head">
                   <a
-                    [href]="'complete-ride-details.html?id=' + (ride?._id || ride?.id)"
+                    [routerLink]="['/complete-ride-details']"
+                    [queryParams]="{ id: ride?._id || ride?.id }"
                     class="my-ride-img"
                   >
                     <img
@@ -236,7 +250,8 @@
                   <div class="my-ride-content flex-column">
                     <div class="flex-spacing">
                       <a
-                        [href]="'complete-ride-details.html?id=' + (ride?._id || ride?.id)"
+                        [routerLink]="['/complete-ride-details']"
+                        [queryParams]="{ id: ride?._id || ride?.id }"
                       >
                         <h6 class="title-color fw-medium">
                           {{ ride?.userId?.username || ride?.userName ||
@@ -308,7 +323,12 @@
                     </li>
                   </ul>
                 </div>
-                <a class="btn theme-btn w-100 mt-3">View Ride</a>
+                <a
+                  [routerLink]="['/complete-ride-details']"
+                  [queryParams]="{ id: ride?._id || ride?.id }"
+                  class="btn theme-btn w-100 mt-3"
+                  >View Ride</a
+                >
               </div>
             </li>
           </ul>
@@ -336,7 +356,8 @@
               <div class="my-ride-box">
                 <div class="my-ride-head">
                   <a
-                    [href]="'cancel-ride-details.html?id=' + (ride?._id || ride?.id)"
+                    [routerLink]="['/cancel-ride-details']"
+                    [queryParams]="{ id: ride?._id || ride?.id }"
                     class="my-ride-img"
                   >
                     <img
@@ -349,7 +370,8 @@
                   <div class="my-ride-content flex-column">
                     <div class="flex-spacing">
                       <a
-                        [href]="'cancel-ride-details.html?id=' + (ride?._id || ride?.id)"
+                        [routerLink]="['/cancel-ride-details']"
+                        [queryParams]="{ id: ride?._id || ride?.id }"
                       >
                         <h6 class="title-color fw-medium">
                           {{ ride?.userId?.username || ride?.userName ||

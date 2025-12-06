@@ -1,96 +1,135 @@
 <!-- header starts -->
 <app-header></app-header>
 <!-- header end -->
-<!-- cancel ride details section starts -->
-<section class="section-b-space pt-0">
-  <div class="custom-container">
-    <div class="my-ride-details-page">
-      <div class="profile-head">
-        <img
-          class="img-fluid profile-img"
-          src="../../assets/images/profile/p5.png"
-          alt="profile"
-        />
-        <div class="profile-content">
-          <div>
-            <h5>Jonathan Higgins</h5>
-            <div class="flex-align-center gap-1">
+<ion-content style="--background: #f8f9fa">
+  <!-- cancel ride details section starts -->
+  <section *ngIf="isLoading" class="section-b-space pt-0">
+    <div class="custom-container text-center">
+      <ion-spinner></ion-spinner>
+      <p class="mt-3">Loading ride details...</p>
+    </div>
+  </section>
+
+  <section *ngIf="!isLoading && errorMessage" class="section-b-space pt-0">
+    <div class="custom-container">
+      <div class="alert alert-danger">{{ errorMessage }}</div>
+    </div>
+  </section>
+
+  <section
+    *ngIf="!isLoading && ride && !errorMessage"
+    class="section-b-space pt-0"
+  >
+    <div class="custom-container">
+      <div class="my-ride-details-page">
+        <div class="profile-head">
+          <img
+            class="img-fluid profile-img"
+            [src]="ride?.userId?.avatar || '../../assets/images/profile/p5.png'"
+            alt="profile"
+          />
+          <div class="profile-content">
+            <div>
+              <h5>{{ ride?.userId?.username || 'Unknown' }}</h5>
+              <!-- <div class="flex-align-center gap-1">
               <img
                 class="star"
                 src="../../assets/images/svg/star.svg"
                 alt="star"
               />
-              <h5 class="fw-normal title-color">4.8</h5>
-              <span class="content-color fw-normal">(127)</span>
+              <h5 class="fw-normal title-color">{{ ride?.rating || '—' }}</h5>
+              <span class="content-color fw-normal"
+                >({{ ride?.ratingCount || 0 }})</span
+              >
+            </div> -->
             </div>
+
+            <span class="status secondary-color fw-normal">Pending</span>
           </div>
-
-          <span class="status secondary-color fw-normal">Pending</span>
         </div>
-      </div>
-      <div class="payment-method-part">
-        <div
-          class="d-flex align-content-center justify-content-between mt-2 mt-sm-3"
-        >
-          <h6 class="title-color fw-normal">Payment method : Cash</h6>
-          <h4 class="success-color fw-semibold">$256</h4>
+        <div class="payment-method-part">
+          <div
+            class="d-flex align-content-center justify-content-between mt-2 mt-sm-3"
+          >
+            <h6 class="title-color fw-normal">
+              Payment method : {{ ride?.paymentMethod || 'Cash' }}
+            </h6>
+            <h4 class="success-color fw-semibold">
+              {{ (ride?.totalAmount != null) ? ('₹ ' + ride.totalAmount) : '-'
+              }}
+            </h4>
+          </div>
+          <p class="mt-1 fw-normal content-color">
+            Distance: {{ (ride?.totalKm != null) ? (ride.totalKm + ' km') : '-'
+            }}
+          </p>
         </div>
-        <p class="mt-1 fw-normal content-color">
-          The total of $24 has a GST of $2 included.
-        </p>
-      </div>
-      <div class="d-flex align-content-center justify-content-between mt-3">
-        <h6 class="content-color fw-normal">Date</h6>
-        <h5 class="title-color fw-normal">15 Feb’25,10:15 AM</h5>
-      </div>
-      <div class="d-flex align-content-center justify-content-between mt-2">
-        <h6 class="content-color fw-normal">Booking ID</h6>
-        <h5 class="title-color fw-normal">#12000052</h5>
-      </div>
-      <div class="d-flex align-content-center justify-content-between mt-2">
-        <h6 class="content-color fw-normal">Mobile Number</h6>
-        <h5 class="title-color fw-normal">+1 (704) 88 6008</h5>
-      </div>
-
-      <img
-        class="img-fluid route-map w-100 mt-3"
-        src="../../assets/images/route-map.png"
-        alt="map"
-      />
-    </div>
-    <img
-      class="img-fluid hangging-img1"
-      src="../../assets/images/svg/hangging.svg"
-      alt="hangging"
-    />
-    <img
-      class="img-fluid hangging-img2"
-      src="../../assets/images/svg/hangging.svg"
-      alt="hangging"
-    />
-    <ul
-      class="ride-location-listing driver-location-list position-relative mt-3 p-3"
-    >
-      <li>
-        <div class="location-box">
-          <img
-            class="icon"
-            src="../../assets/images/svg/location-fill.svg"
-            alt="location"
-          />
-          <h5 class="fw-light title-color">17, Yonge St, Toronto, Canada</h5>
-        </div>
-      </li>
-
-      <li>
-        <div class="location-box">
-          <img class="icon" src="../../assets/images/svg/gps.svg" alt="gps" />
-          <h5 class="fw-light title-color border-0">
-            20, Yonge St, Toronto, Canada
+        <div class="d-flex align-content-center justify-content-between mt-3">
+          <h6 class="content-color fw-normal">Date</h6>
+          <h5 class="title-color fw-normal">
+            {{ ride.pickUpDate | date:'dd MMM yyyy' }} at {{ ride.pickUpTime |
+            date:'hh:mm a' }}
           </h5>
         </div>
-      </li>
-    </ul>
-  </div>
-</section>
-<!-- cancel ride details section end -->
+        <div class="d-flex align-content-center justify-content-between mt-2">
+          <h6 class="content-color fw-normal">Booking ID</h6>
+          <h5 class="title-color fw-normal">
+            {{ ride?._id || ride?.id || '#N/A' }}
+          </h5>
+        </div>
+        <div class="d-flex align-content-center justify-content-between mt-2">
+          <h6 class="content-color fw-normal">Mobile Number</h6>
+          <h5 class="title-color fw-normal">
+            {{ ride?.userId?.phoneNumber || ride?.phone || 'N/A' }}
+          </h5>
+        </div>
+
+        <img
+          class="img-fluid route-map w-100 mt-3"
+          src="../../assets/images/route-map.png"
+          alt="map"
+        />
+      </div>
+      <img
+        class="img-fluid hangging-img1"
+        src="../../assets/images/svg/hangging.svg"
+        alt="hangging"
+      />
+      <img
+        class="img-fluid hangging-img2"
+        src="../../assets/images/svg/hangging.svg"
+        alt="hangging"
+      />
+      <ul
+        class="ride-location-listing driver-location-list position-relative mt-3 p-3"
+      >
+        <li *ngFor="let location of ride?.locations; let i = index">
+          <div class="location-box">
+            <img
+              class="icon"
+              [src]="(i === 0) ? '../../assets/images/svg/location-fill.svg' : (i === ride?.locations.length - 1) ? '../../assets/images/svg/gps.svg' : '../../assets/images/svg/location-fill.svg'"
+              [alt]="(i === 0) ? 'pickup' : (i === ride?.locations.length - 1) ? 'dropoff' : 'waypoint'"
+            />
+            <h5
+              class="fw-light title-color"
+              [ngClass]="{ 'border-0': i === ride?.locations.length - 1 }"
+            >
+              {{ location }}
+            </h5>
+          </div>
+        </li>
+      </ul>
+      <a class="btn theme-btn w-100 mt-3" (click)="startRide()">Start Ride</a>
+      <a class="btn theme-btn w-100 mt-3">Pickup Customer</a>
+      <div class="reason-part mt-3">
+        <p
+          (click)="openCancelModal()"
+          style="cursor: pointer; font-weight: bold; text-align: center"
+        >
+          Cancel Ride
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- cancel ride details section end -->
+</ion-content>
