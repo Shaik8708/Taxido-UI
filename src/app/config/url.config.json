@@ -12,6 +12,7 @@
   "driverLeadAcceptPath": "/driver/accept",
   "driverLeadStartedPath": "/driver/started",
   "driverLeadCancelledPath": "/driver/cancelled",
+  "driverLeadCompletedPath": "/driver/completed",
   "driverCreateAccountPath": "/driver-account/createAccount",
   "driverLoginPath": "/driver/login",
   "otpSentDealerPath": "/dealer/refresh-otp",

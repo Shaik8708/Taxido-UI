@@ -24,6 +24,9 @@ export class MyRidesPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    // this.getFilteredRides('accepted');
+  }
+  ionViewWillEnter() {
     this.getFilteredRides('accepted');
   }
 
@@ -31,6 +34,7 @@ export class MyRidesPage implements OnInit {
     this.isLoading = true;
     this.hasError = false;
     this.errorMessage = '';
+    this.filteredRides = []
 
     await this.loader.showLoading('Fetching Profile...');
 

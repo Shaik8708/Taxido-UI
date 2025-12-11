@@ -120,9 +120,11 @@
             <!-- <a href="ride-verification.html" class="btn theme-btn w-100 mt-3"
               >Pickup Customer</a
             > -->
+            <button class="btn theme-btn w-100 mt-3" (click)="completeRide(ride?._id || ride?.id)">Complete Ride</button>
             <div class="reason-part mt-3">
               <p
-                (click)="cancelRide(ride)"
+               data-bs-toggle="modal" data-bs-target="#cancel"
+                (click)="setRideId(ride)"
                 style="cursor: pointer; font-weight: bold; text-align: center"
               >
                 Cancel Ride
@@ -138,6 +140,48 @@
 <!-- panel-space start -->
 <!-- <section class="panel-space"></section> -->
 <!-- panel-space end -->
+
+<!-- cancel modal starts -->
+<div
+  class="modal delete-modal fade"
+  id="cancel"
+  data-bs-backdrop="false"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img
+        class="img-fluid icon"
+        src="../../assets/images/svg/alert.svg"
+        alt="alert"
+        />
+        <h4>Reason to cancel the ride?</h4>
+        <br>
+        <form [formGroup]="cancelRideForm">
+          <input type="text" formControlName="reason" class="form-control">
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a class="btn gray-btn w-50 m-0" data-bs-dismiss="modal"
+          >Close</a
+        >
+        <button
+          (click)="cancelRide()"
+          class="btn theme-btn w-50 m-0"
+          data-bs-dismiss="modal"
+          [disabled]="cancelRideForm.invalid"
+          >Yes, Cancel
+      </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- cancel modal end -->
 
 <!-- bottom navbar start -->
 <app-tabs></app-tabs>
